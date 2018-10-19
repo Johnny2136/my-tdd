@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { defineFeature, loadFeature } from "jest-cucumber";
 import Quasar from "quasar-framework";
 import { mount, createLocalVue } from "@vue/test-utils";
