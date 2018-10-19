@@ -7,13 +7,9 @@ import iconSet from "quasar-framework/icons/fontawesome";
 import "quasar-extras/fontawesome";
 
 const feature = loadFeature("tests/unit/features/Home.feature");
-
 defineFeature(feature, test => {
     let localVue;
-
-    /**
-     * Initialize the Vue.js rendering engine with Quasar and font-awesome
-     */
+    // Initialize the Vue.js rendering engine with Quasar and font-awesome
     beforeEach(() => {
         localVue = createLocalVue();
         localVue.use(Quasar, {
@@ -21,21 +17,17 @@ defineFeature(feature, test => {
             iconSet: iconSet
         });
     });
-
     test("Opening the initial web page", ({ given, when, then }) => {
         let wrapper;
-        /**
-         * Load our Default layout into the Vue rendering engine along with the Router instance
-         */
+        // Load our Default layout into the Vue rendering engine along with the Router instance
+
         given("The page is open in a browser", () => {
             wrapper = mount(Default, { localVue, router });
         });
+        // There really is not operation here, but we need a `when` clause
 
-        /**
-         * There really is not operation here, but we need a `when` clause
-         */
         when("I inspect the page", () => {
-            // No-OP
+            // No-Operation
         });
 
         then("I should see the Home landing page", () => {
