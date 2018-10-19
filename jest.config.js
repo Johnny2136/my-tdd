@@ -1,17 +1,25 @@
 module.exports = {
-  moduleFileExtensions: ["js", "jsx", "json", "vue"],
-  transform: {
-    "^.+\\.vue$": "vue-jest",
-    ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$":
-      "jest-transform-stub",
-    "^.+\\.jsx?$": "babel-jest"
-  },
-  moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/src/$1"
-  },
-  snapshotSerializers: ["jest-serializer-vue"],
-  testMatch: [
-    "**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
-  ],
-  testURL: "http://localhost/"
+    moduleFileExtensions: ["js", "vue"],
+    transform: {
+        "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+        ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+    },
+    moduleNameMapper: {
+        "^vue$": "vue/dist/vue.common.js",
+        "src/([^\\.]*).js$": "<rootDir>/src/$1.js",
+        "src/([^\\.]*).vue$": "<rootDir>/src/$1.vue",
+        "src/([^\\.]*)/([^\\.]*).vue$": "<rootDir>/src/$1/$2.vue",
+        "quasar": "quasar-framework/dist/umd/quasar.mat.umd.min.js"
+    },
+    snapshotSerializers: ["jest-serializer-vue"],
+    // testMatch: ["**/tests/unit/**/*.spec.js"],
+    reporters: [
+        "default", [
+            "./node_modules/jest-html-reporter",
+            {
+                pageTitle: "Test Report"
+            }
+        ]
+    ],
+    testMatch: ["**/*.steps.js"]
 };
