@@ -16,7 +16,7 @@
         />
 
         <q-toolbar-title>
-          My New Application
+          My ToDo Application
         </q-toolbar-title>
       </q-toolbar>
     </q-layout-header>

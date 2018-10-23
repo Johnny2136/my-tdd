@@ -8,4 +8,11 @@ Scenario: Opening the initial web page
   And the page should have a sidebar menu
   And the page should have a title bar
   And the title bar should contain the correct words
-  And there should be no other components in the page-view
+
+Scenario: List on the home page
+  Given The page is open in a browser
+  When I inspect the page elements
+  Then I should see a h2 list title
+  And the title should contain the correct words
+  And the page should contain a UL tag
+  And the page should have at least 3 li items
