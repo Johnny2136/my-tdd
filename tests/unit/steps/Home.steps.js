@@ -2,6 +2,7 @@ import { defineFeature, loadFeature } from "jest-cucumber";
 import Quasar from "quasar-framework";
 import { mount, createLocalVue } from "@vue/test-utils";
 import Default from "src/layouts/Default.vue";
+import Home from "src/views/Home.vue";
 import router from "./src/router.js";
 import iconSet from "quasar-framework/icons/fontawesome";
 import "quasar-extras/fontawesome";
@@ -34,10 +35,6 @@ defineFeature(feature, test => {
             expect(wrapper.html()).toMatch(/^<div.*/);
         });
 
-        then("the page should contain a logo", () => {
-            expect(wrapper.find("img").attributes("src")).toBe("../assets/logo.png");
-        });
-
         then("the page should have a sidebar menu", () => {
             expect(wrapper.find("aside.q-layout-drawer")).toBeDefined();
             expect(wrapper.find("i.q-icon.fas.fa-bars")).toBeDefined();
@@ -57,7 +54,7 @@ defineFeature(feature, test => {
 
         // Examine the Home page default layout
         given("The page is open in a browser", () => {
-            wrapper = mount(Default, { localVue, router });
+            wrapper = mount(Home, { localVue, router });
         });
 
         // There really is not operation here, but we need a `when` clause
@@ -65,12 +62,12 @@ defineFeature(feature, test => {
             // No-Operation
         });
 
-        then("I should see a h2 list title", () => {
-            expect(wrapper.html()).toMatch(/^<q-list-header.*/);
+        then("I should see a list title", () => {
+            expect(wrapper.find("div.q-list-header")).toBeDefined();
         });
 
         then("the title should contain the correct words", () => {
-            expect(wrapper.find("div.q-List-Header ").text()).toMatch(/^My ToDo List.*/);
+            expect(wrapper.find("div.q-list-header").text()).toMatch(/^My ToDo List*/);
         });
 
         then("the page should contain a UL tag", () => {
