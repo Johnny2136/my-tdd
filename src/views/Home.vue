@@ -1,7 +1,7 @@
 <template>
   <q-page>    
     <div style="width 500px; max-width: 90vw;">
-      <q-list-header>My ToDo List</q-list-header> 
+      <q-list-header class="q-display-3">My ToDo List:</q-list-header> 
       <q-list highlight inset-separator>
         <q-item>
           <q-checkbox v-model="check1" color="secondary" />
@@ -25,6 +25,7 @@
 </template>
 
 <style>
+
 </style>
 
 <script>
@@ -35,15 +36,6 @@ export default {
       check1: true,
       check2: false,
       check3: false,
-      check4: true,
-      check5: false,
-      customModel: 'no',
-      indet: null,
-      checkArray: ['one'],
-      check6: true,
-      group: ['upload'],
-      list1: false,
-      list2: true,
       newTodo: '',
       idForTodo: 3,
       beforeEditCache: '',
