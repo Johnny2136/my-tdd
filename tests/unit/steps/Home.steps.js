@@ -20,13 +20,13 @@ defineFeature(feature, test => {
     });
     test("Opening the initial web page", ({ given, when, then }) => {
         let wrapper;
+        
         // Load our Default layout into the Vue rendering engine along with the Router instance
-
         given("The page is open in a browser", () => {
             wrapper = mount(Default, { localVue, router });
         });
+        
         // There really is not operation here, but we need a `when` clause
-
         when("I inspect the page", () => {
             // No-Operation
         });
@@ -70,11 +70,11 @@ defineFeature(feature, test => {
             expect(wrapper.find("div.q-list-header").text()).toMatch(/^My ToDo List*/);
         });
 
-        then("the page should contain a UL tag", () => {
+        then("the page should contain a List tag", () => {
             expect(wrapper.html()).toMatch(/^<q-item.*/);
         });
 
-        then("the page should have at least 3 li items", () => {
+        then("the page should have at least 3 list items", () => {
             expect(wrapper.html()).toMatch(/^<q-item-main.*/);
         });
     });
