@@ -45,37 +45,35 @@ defineFeature(feature, test => {
         });
 
         then("the title bar should contain the correct words", () => {
-            expect(wrapper.find("div.q-toolbar-title").text()).toMatch(/^My ToDo Application.*/);
+            expect(wrapper.find("div.q-toolbar-title").text())
+                .toMatch(/^My ToDo Application.*/);
         });
     });
-
-    test("List on the home page", ({ given, when, then }) => {
-        let wrapper;
-
-        // Examine the Home page default layout
-        given("The page is open in a browser", () => {
-            wrapper = mount(Home, { localVue, router });
+    let wrapper;
+    test('List on the initial web page', ({ given, when, then, pending }) => {
+        given('The page is open in a browser', () => {
+            wrapper = mount(Default, { localVue, router });
         });
 
-        // There really is not operation here, but we need a `when` clause
-        when("I inspect the page elements", () => {
-            // No-Operation
+        when('I inspect the page elements', () => {
+            //no operation
         });
 
-        then("I should see a list title", () => {
-            expect(wrapper.find("div.q-list-header")).toBeDefined();
+        then('I should see a list QListHeadertitle', () => {
+            expect(wrapper.find("q-list-header")).toBeDefined();
         });
 
-        then("the title should contain the correct words", () => {
-            expect(wrapper.find("div.q-list-header").text()).toMatch(/^My ToDo List*/);
+        then('the QListHeadertitle should contain the correct words', () => {
+            expect(wrapper.find("div.q-list-header").text())
+                .toMatch(/^My ToDo List:*/);
         });
 
-        then("the page should contain a UL tag", () => {
-            expect(wrapper.html()).toMatch(/^<q-item.*/);
+        then('the page should contain a QList tag', () => {
+            expect(wrapper.find("q-list")).toBeDefined();
         });
 
-        then("the page should have at least 3 li items", () => {
-            expect(wrapper.html()).toMatch(/^<q-item-main.*/);
+        then(/^the page should have at least (.*) QListItems$/, (arg0) => {
+            expect(wrapper.find("q-list-item")).toBeDefined();
         });
     });
 });
