@@ -13,5 +13,5 @@ Scenario: List on the home page
   When I inspect the page elements
   Then I should see a list title
   And the title should contain the correct words
-  And the page should contain a UL tag
-  And the page should have at least 3 li items
+  And the page should contain a List tag
+  And the page should have at least 3 list items
