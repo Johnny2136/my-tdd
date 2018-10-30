@@ -1,11 +1,13 @@
+import Vue from 'vue';
 import { defineFeature, loadFeature } from "jest-cucumber";
 import Quasar from "quasar-framework";
 import { mount, createLocalVue } from "@vue/test-utils";
 import Default from "src/layouts/Default.vue";
 import Home from "src/views/Home.vue";
-import router from "./src/router.js";
 import iconSet from "quasar-framework/icons/fontawesome";
 import "quasar-extras/fontawesome";
+
+Vue.config.silent = true;
 
 const feature = loadFeature("tests/unit/features/Home.feature");
 defineFeature(feature, test => {
@@ -18,64 +20,67 @@ defineFeature(feature, test => {
             iconSet: iconSet
         });
     });
-    test("Opening the initial web page", ({ given, when, then }) => {
-        let wrapper;
-        // Load our Default layout into the Vue rendering engine along with the Router instance
 
+    test("Verify the application and its basic elements", ({ given, when, then }) => {
+        let wrapper;
+
+        // Load our Default layout into the Vue rendering engine along with the Router instance
         given("The page is open in a browser", () => {
-            wrapper = mount(Default, { localVue, router });
+            wrapper = mount(Default, {
+                localVue,
+            });
         });
-        // There really is not operation here, but we need a `when` clause
 
         when("I inspect the page", () => {
             // No-Operation
         });
 
-        then("I should see the Home landing page", () => {
-            expect(wrapper.html()).toMatch(/^<div.*/);
+        then("I should see the Application name", () => {
+            //console.log(wrapper.html());
+            expect(wrapper.html()).toContain('My ToDo Application');
         });
 
-        then("the page should have a sidebar menu", () => {
-            expect(wrapper.find("aside.q-layout-drawer")).toBeDefined();
-            expect(wrapper.find("i.q-icon.fas.fa-bars")).toBeDefined();
+        then("sidebar menu should have a link to Home page", () => {
+            const it = wrapper.findAll("div.q-item-label").at(0);
+            //console.log(it.html());
+            expect(it).toBeDefined();
+            expect(it.html()).toContain("Home");
         });
 
-        then("the page should have a title bar", () => {
-            expect(wrapper.find("div.q-toolbar-title")).toBeDefined();
-        });
-
-        then("the title bar should contain the correct words", () => {
-            expect(wrapper.find("div.q-toolbar-title").text()).toMatch(/^My ToDo Application.*/);
-        });
-    });
-
-    test("List on the home page", ({ given, when, then }) => {
-        let wrapper;
-
-        // Examine the Home page default layout
-        given("The page is open in a browser", () => {
-            wrapper = mount(Home, { localVue, router });
-        });
-
-        // There really is not operation here, but we need a `when` clause
-        when("I inspect the page elements", () => {
-            // No-Operation
-        });
-
-        then("I should see a list title", () => {
-            expect(wrapper.find("div.q-list-header")).toBeDefined();
-        });
-
-        then("the title should contain the correct words", () => {
-            expect(wrapper.find("div.q-list-header").text()).toMatch(/^My ToDo List*/);
-        });
-
-        then("the page should contain a UL tag", () => {
-            expect(wrapper.html()).toMatch(/^<q-item.*/);
-        });
-
-        then("the page should have at least 3 li items", () => {
-            expect(wrapper.html()).toMatch(/^<q-item-main.*/);
+        then("sidebar menu should have a link to About page", () => {
+            const it = wrapper.findAll("div.q-item-label").at(1);
+            //console.log(it.html());
+            expect(it).toBeDefined();
+            expect(it.html()).toContain("About");
         });
     });
+
+    // test("List on the home page", ({ given, when, then }) => {
+    //     let wrapper;
+
+    //     given("The page is open in a browser", () => {
+    //         wrapper = mount(Home, { localVue });
+    //     });
+
+    //     // There really is not operation here, but we need a `when` clause
+    //     when("I inspect the page elements", () => {
+    //         // No-Operation
+    //     });
+
+    //     then("I should see my list", () => {
+    //         const it = wrapper.find("div.q-list-header");
+    //         console.log(it.html());
+    //         // expect(it.html()).toMatch(/^My ToDo List*/);
+    //         // expect(wrapper.html()).toContain('My ToDo List');
+    //     });
+
+    //     then("the page should contain a UL tag", () => {
+    //         expect(wrapper.find("div.q-item-label ellipsis")).toBeDefined();
+    //         expect(wrapper.html()).toMatch("Brunch this weekend");
+    //     });
+
+    //     then("the page should have at least 3 li items", () => {
+    //       //  expect(wrapper.html()).toMatch(/^<q-item-main.*/);
+    //     });
+    // });
 });
