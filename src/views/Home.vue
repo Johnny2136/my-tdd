@@ -1,5 +1,4 @@
 <template>
-  <q-page>    
     <div style="width 500px; max-width: 90vw;">
       <q-list-header class="q-display-3">My ToDo List:</q-list-header> 
       <q-list highlight inset-separator>
@@ -21,7 +20,6 @@
       </q-list> 
 
     </div>
-  </q-page>
 </template>
 
 <style>
@@ -30,7 +28,7 @@
 
 <script>
 export default {
-  name: "PageHome",
+  name: "Home",
   data () {
     return {
       check1: true,
