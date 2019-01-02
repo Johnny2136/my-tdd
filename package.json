@@ -10,6 +10,7 @@
         "test": "vue-cli-service test:unit"
     },
     "dependencies": {
+        "jsdoc": "^3.5.5",
         "jshint": "^2.9.7",
         "quasar-extras": "^2.0.4",
         "quasar-framework": "^0.17.0",
