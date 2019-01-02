@@ -10,6 +10,7 @@
         "test": "vue-cli-service test:unit"
     },
     "dependencies": {
+        "jshint": "^2.9.7",
         "quasar-extras": "^2.0.4",
         "quasar-framework": "^0.17.0",
         "register-service-worker": "^1.0.0",
@@ -39,5 +40,4 @@
         "vue-cli-plugin-quasar": "^0.17.1",
         "vue-template-compiler": "^2.5.17"
     }
-
 }
