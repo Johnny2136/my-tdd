@@ -49,31 +49,4 @@ defineFeature(feature, test => {
                 .toMatch(/^My ToDo Application.*/);
         });
     });
-    let wrapper;
-    test('List on the initial web page', ({ given, when, then, pending }) => {
-        given('The page is open in a browser', () => {
-            wrapper = mount(Default, { localVue, router });
-        });
-
-        when('I inspect the page elements', () => {
-            //no operation
-        });
-
-        then('I should see a list QListHeadertitle', () => {
-            expect(wrapper.find("q-list-header")).toBeDefined();
-        });
-
-        then('the QListHeadertitle should contain the correct words', () => {
-            expect(wrapper.find("div.q-list-header").text())
-                .toMatch(/^My ToDo List:*/);
-        });
-
-        then("the page should contain a List tag", () => {
-            expect(wrapper.html()).toMatch(/^<q-item.*/);
-        });
-
-        then("the page should have at least 3 list items", () => {
-            expect(wrapper.html()).toMatch(/^<q-item-main.*/);
-        });
-    });
 });
